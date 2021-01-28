@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,6 +29,7 @@ import { PortfolioSummaryComponent } from './components/portfolio-summary/portfo
 import { StockDetailsComponent } from './components/stock-details/stock-details.component';
 import { HoldingsComponent } from './components/holdings/holdings.component';
 import { SearchComponent } from './components/search/search.component';
+import { StockTotalsComponent } from './components/stock-totals/stock-totals.component';
 
 
 @NgModule({
@@ -43,11 +45,13 @@ import { SearchComponent } from './components/search/search.component';
     PortfolioSummaryComponent,
     StockDetailsComponent,
     HoldingsComponent,
-    SearchComponent
+    SearchComponent,
+    StockTotalsComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,

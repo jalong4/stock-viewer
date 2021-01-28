@@ -10,7 +10,8 @@ import { Utils } from 'src/app/utils/Utils';
 export class StockDetailsComponent implements OnInit {
   @Input() stock: Stock = new Stock();
   @Input() utils:Utils = new Utils();
-  
+  @Input() isStockQuery = false;
+
   constructor() { }
 
   ngOnInit(): void {

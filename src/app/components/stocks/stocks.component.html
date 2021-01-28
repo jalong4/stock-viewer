@@ -1,7 +1,8 @@
 <mat-card class=stock-card>
-    <mat-card-title>{{ account.name }} Stocks</mat-card-title>
+    <mat-card-title>{{ getTitle() }}</mat-card-title>
     <div class="stock-flex">
-        <span class="stock-name-bold">Company Name</span>
+        <span class="stock-name-bold" *ngIf="!isStockQuery">Company Name</span>
+        <span class=" stock-name-bold " *ngIf="isStockQuery">Account Name</span>
         <span class="stock-details-bold ">Price</span>
         <span class="stock-details-bold ">Quanity</span>
         <span class="stock-details-bold ">Change (%)</span>
@@ -19,25 +20,8 @@
         <span class="stock-details-bold ">Post Market Gain</span>
     </div>
     <div *ngFor=" let stock of stocks ">
-        <app-stock-details [stock]="stock ">
+        <app-stock-details [stock]="stock" [isStockQuery]="isStockQuery">
         </app-stock-details>
     </div>
-    <div class="stock-flex">
-        <span class="stock-name-bold">Total</span>
-        <span class="stock-details "></span>
-        <span class="stock-details "></span>
-        <span [ngClass]="utils.getClassNameForPositiveNegative(account.percentChange) " class=" stock-details-bold ">{{utils.getPercent(account.percentChange)}}</span>
-        <span class="stock-details-bold "></span>
-        <span [ngClass]="utils.getClassNameForPositiveNegative(account.dayGain) " class=" stock-details-bold ">{{utils.numberWithCommas(account.dayGain)}}</span>
-        <span class=" stock-details-bold "></span>
-        <span class=" stock-details-bold ">{{utils.numberWithCommas(account.totalCost)}}</span>
-        <span [ngClass]="utils.getClassNameForPositiveNegative(account.profit) " class=" stock-details-bold ">{{utils.numberWithCommas(account.profit)}}</span>
-        <span class=" stock-details-bold ">{{utils.numberWithCommas(account.total)}}</span>
-        <span [ngClass]="utils.getClassNameForPositiveNegative(account.percentProfit) " class=" stock-details-bold ">{{utils.getPercent(account.percentProfit)}}</span>
-        <span class=" stock-details-bold "></span>
-        <span class=" stock-details-bold "></span>
-        <span [ngClass]="utils.getClassNameForPositiveNegative(account.postMarketPercentChange) " class=" stock-details-bold ">{{utils.getPercent(account.postMarketPercentChange)}}</span>
-        <span class=" stock-details-bold "></span>
-        <span [ngClass]="utils.getClassNameForPositiveNegative(account.postMarketGain) " class=" stock-details-bold ">{{utils.numberWithCommas(account.postMarketGain)}}</span>
-    </div>
+    <app-stock-totals [isStockQuery]="isStockQuery" [accountName]="account.name" [summary]="getStockSummary()"></app-stock-totals>
 </mat-card>

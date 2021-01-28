@@ -8,8 +8,8 @@ import { Utils } from 'src/app/utils/Utils';
   styleUrls: ['./portfolio-summary.component.css']
 })
 export class PortfolioSummaryComponent implements OnInit {
-  @Input() account: Account = new Account();
-  @Input() utils:Utils = new Utils();
+  @Input() account = new Account();
+  @Input() utils = new Utils();
   constructor() { }
 
   ngOnInit(): void {

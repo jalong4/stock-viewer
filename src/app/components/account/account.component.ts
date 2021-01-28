@@ -9,10 +9,10 @@ import { Utils } from 'src/app/utils/Utils';
 })
 export class AccountComponent implements OnInit {
 
-  @Input() account: Account = new Account();
-  @Input() utils:Utils = new Utils();
+  @Input() account = new Account();
+  @Input() utils = new Utils();
 
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Output() notify = new EventEmitter<string>();
 
   onClick() {
     this.notify.emit(this.account.name);

@@ -1,9 +1,9 @@
 <mat-card>
     <mat-card-title>Top Movers</mat-card-title>
     <div fxLayout="row">
-        <app-stock-group [title]="'Top Day Gainers'" [trendingStocks]="summary.topDayGainers"></app-stock-group>
-        <app-stock-group [title]="'Top Day Losers'" [trendingStocks]="summary.topDayLosers"></app-stock-group>
-        <app-stock-group [title]="'Most Profitable'" [trendingStocks]=" summary.mostProfitable "></app-stock-group>
-        <app-stock-group [title]="'Least Profitable'" [trendingStocks]="summary.leastProfitable "></app-stock-group>
+        <app-stock-group [title]="'Top Day Gainers'" [trendingStocks]="summary.topDayGainers" (stockClickedEvent)="onStockClickedEvent($event)"></app-stock-group>
+        <app-stock-group [title]="'Top Day Losers'" [trendingStocks]="summary.topDayLosers" (stockClickedEvent)=" onStockClickedEvent($event)"></app-stock-group>
+        <app-stock-group [title]="'Most Profitable'" [trendingStocks]=" summary.mostProfitable" (stockClickedEvent)="onStockClickedEvent($event)"></app-stock-group>
+        <app-stock-group [title]="'Least Profitable'" [trendingStocks]="summary.leastProfitable" (stockClickedEvent)="onStockClickedEvent($event)"></app-stock-group>
     </div>
 </mat-card>

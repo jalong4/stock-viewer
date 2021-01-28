@@ -8,11 +8,11 @@ import { Account } from 'src/app/models/Account';
 })
 export class AccountsComponent implements OnInit {
 
-  @Input() accounts: Account[] = [new Account()];
-  @Input() prefix: string = "";
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Input() accounts= [new Account()];
+  @Input() prefix = "";
+  @Output() notify = new EventEmitter<string>();
 
-  onNotifyClicked(account:string):void {
+  onNotifyAccountName(account:string):void {
     console.log(account);
     this.notify.emit(account);
   }

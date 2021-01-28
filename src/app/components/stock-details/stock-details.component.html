@@ -1,5 +1,6 @@
 <div class="stock-flex">
-    <span class=" stock-name ">{{ stock.name | slice:0:21 }}</span>
+    <span class=" stock-name " *ngIf="!isStockQuery">{{ stock.name | slice:0:21 }}</span>
+    <span class=" stock-name " *ngIf="isStockQuery">{{ stock.account | slice:0:21 }}</span>
     <span [ngClass]=" utils.getClassNameForPositiveNegative(stock.price) " class=" stock-details ">{{utils.numberWithCommas(stock.price)}}</span>
     <span class=" stock-details ">{{utils.numberWithCommas(stock.quantity) }}</span>
     <span [ngClass]="utils.getClassNameForPositiveNegative(stock.percentChange) " class=" stock-details ">{{utils.getPercent(stock.percentChange)}}</span>

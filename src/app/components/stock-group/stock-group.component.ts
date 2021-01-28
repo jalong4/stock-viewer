@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { TrendingStock } from 'src/app/models/TrendingStock';
 import { Utils } from 'src/app/utils/Utils';
 
@@ -13,9 +13,16 @@ export class StockGroupComponent implements OnInit {
   @Input() trendingStocks: TrendingStock[] = [new TrendingStock()];
   @Input() utils:Utils = new Utils();
 
+  @Output() stockClickedEvent = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick(ticker: string) {
+    console.log(`clicked on stock: ${ticker}`);
+    this.stockClickedEvent.emit(ticker);
   }
 
 }

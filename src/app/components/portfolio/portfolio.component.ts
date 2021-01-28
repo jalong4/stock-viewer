@@ -8,10 +8,10 @@ import { Portfolio } from 'src/app/models/Portfolio';
 })
 export class PortfolioComponent implements OnInit {
 
-@Input() portfolio: Portfolio = new Portfolio();
-@Output() notify: EventEmitter<string> = new EventEmitter<string>();
+@Input() portfolio = new Portfolio();
+@Output() notify = new EventEmitter<string>();
 
-  onNotifyClicked(account:string):void {
+  onNotifyAccountName(account:string):void {
     console.log(account);
     this.notify.emit(account);
   }

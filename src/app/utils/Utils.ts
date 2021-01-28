@@ -4,6 +4,13 @@ export class Utils {
   }
 
   numberWithCommas(number: number) {
+    if (Number.isNaN(number)) {
+      return "";
+    }
+
+    if (number == null) {
+      return "";
+    }
     return number.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   }
 

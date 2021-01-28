@@ -1,4 +1,4 @@
 <div class="portfolio">
     <app-portfolio-summary [account]=" portfolio.summary.totals "></app-portfolio-summary>
-    <app-accounts [accounts]="portfolio.summary.accounts" (notify)="onNotifyClicked($event)"></app-accounts>
+    <app-accounts [accounts]="portfolio.summary.accounts" (notify)="onNotifyAccountName($event)"></app-accounts>
 </div>

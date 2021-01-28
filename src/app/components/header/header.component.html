@@ -4,7 +4,7 @@
         <span class="logo ">Long Sofware Inc.</span>
     </a>
     <div class="spacer"></div>
-    <a mat-button routerLink="search">Search</a>
-    <a mat-button routerLink="holdings">Holdings</a>
+    <app-search (searchEvent)="onSearchEvent($event)"></app-search>
+    <a mat-button routerLink=" holdings ">Holdings</a>
     <button mat-icon-button>Menu</button>
 </mat-toolbar>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Summary } from 'src/app/models/Summary';
 
 @Component({
@@ -7,11 +7,17 @@ import { Summary } from 'src/app/models/Summary';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
-  @Input() summary: Summary = new Summary();
+  @Input() summary = new Summary();
+  @Output() stockClickedEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onStockClickedEvent(ticker: string):void {
+    console.log(ticker);
+    this.stockClickedEvent.emit(ticker);
   }
 
 }
