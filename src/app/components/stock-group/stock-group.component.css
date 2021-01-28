@@ -1,0 +1,21 @@
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+    
+    li {
+        margin-bottom: 2px;
+    }
+    
+    .right-justify {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        margin-right: 0;
+    }
+    
+    .trending {
+        min-height: 160px;
+        ;
+    }
