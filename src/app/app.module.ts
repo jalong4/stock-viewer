@@ -22,14 +22,11 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AccountComponent } from './components/account/account.component';
-import { StocksComponent } from './components/stocks/stocks.component';
 import { NewsComponent } from './components/news/news.component';
 import { StockGroupComponent } from './components/stock-group/stock-group.component';
 import { PortfolioSummaryComponent } from './components/portfolio-summary/portfolio-summary.component';
-import { StockDetailsComponent } from './components/stock-details/stock-details.component';
 import { HoldingsComponent } from './components/holdings/holdings.component';
 import { SearchComponent } from './components/search/search.component';
-import { StockTotalsComponent } from './components/stock-totals/stock-totals.component';
 import { StockTableComponent } from './components/stock-table/stock-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -37,45 +34,42 @@ import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PortfolioComponent,
-    AccountsComponent,
-    HeaderComponent,
-    AccountComponent,
-    StocksComponent,
-    NewsComponent,
-    StockGroupComponent,
-    PortfolioSummaryComponent,
-    StockDetailsComponent,
-    HoldingsComponent,
-    SearchComponent,
-    StockTotalsComponent,
-    StockTableComponent
-  ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    FormsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
-    MatButtonModule,
-    AppRoutingModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatListModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PortfolioComponent,
+        AccountsComponent,
+        HeaderComponent,
+        AccountComponent,
+        NewsComponent,
+        StockGroupComponent,
+        PortfolioSummaryComponent,
+        HoldingsComponent,
+        SearchComponent,
+        StockTableComponent
+    ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        FormsModule,
+        FlexLayoutModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule,
+        AppRoutingModule,
+        MatRippleModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSidenavModule,
+        MatCardModule,
+        MatListModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,50 +1,60 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import {
+    Component,
+    ViewChild,
+    ElementRef,
+    ViewEncapsulation,
+} from '@angular/core';
+
+import {
+    Observable,
+    Subject
+} from 'rxjs';
+
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+    selector: 'app-search',
+    templateUrl: './search.component.html',
+    styleUrls: ['./search.component.css']
 })
+
 export class SearchComponent {
 
-  searchIcon = 'search';
+    @ViewChild('searchInput', { read: ElementRef })
+    searchInput: ElementRef;
 
-  @ViewChild('searchInput', { read: ElementRef })
-  private searchInput!: ElementRef;
+    public searchIcon = 'search';
+    private interactedWithSearch = false;
 
-  interactedWithSearch = false;
-
-  @Output() searchEvent = new EventEmitter<{ query? : string, action: 'SEARCH' | 'CLEAR' }>();
-
-  constructor() { }
+    constructor(private messageService: MessageService) {}
 
 
-  search() {
-    const searchTerm = this.searchInput.nativeElement.value;
-    console.log(`Search: ${searchTerm}`);
-    this.searchEvent.emit({ query: searchTerm, action: 'SEARCH' });
-    this.interactedWithSearch = true;
-  }
-
-  toggleSearch() {
-    console.log(`toggleSearch: this.interactedWithSearch: ${this.interactedWithSearch}`);
-    const searchContainer = document.getElementById('search-container');
-    this.toggleClass(searchContainer, 'open');
-        this.searchIcon = this.hasClass(searchContainer, 'open') ? 'clear' : 'search';
-    if (!this.hasClass(searchContainer, 'open') && this.interactedWithSearch) {
-      console.log("clearing search)")
-      this.searchEvent.emit({ action: 'CLEAR' });
-      this.interactedWithSearch = false;
-      this.searchInput.nativeElement.value = '';
+    public search() {
+        const searchTerm = this.searchInput.nativeElement.value;
+        console.log(`Search: ${searchTerm}`);
+        this.messageService.sendMessage({ value: searchTerm, action: 'SHOW_TICKER' });
+        this.interactedWithSearch = true;
     }
-  }
 
-  private hasClass(element: any, className: string) {
-    return element.classList.contains(className);
-  }
+    public toggleSearch() {
+        console.log(`toggleSearch: this.interactedWithSearch: ${this.interactedWithSearch}`);
+        const searchContainer = document.getElementById('search-container');
+        this.toggleClass(searchContainer, 'open');
+        this.searchIcon = this.hasClass(searchContainer, 'open') ? 'clear' : 'search';
+        if (!this.hasClass(searchContainer, 'open') && this.interactedWithSearch) {
+            console.log("clearing search)")
+            this.messageService.sendMessage({ action: 'CLEAR' });
+            this.interactedWithSearch = false;
+            this.searchInput.nativeElement.value = '';
+        }
+    }
 
-  private toggleClass(element: any, className: string) {
-    this.hasClass(element, className) ? element.classList.remove(className) : element.classList.add(className);
-  }
+    private hasClass(element: any, className: string) {
+        return element.classList.contains(className);
+    }
+
+    private toggleClass(element: any, className: string) {
+        this.hasClass(element, className) ? element.classList.remove(className) : element.classList.add(className);
+    }
 
 }

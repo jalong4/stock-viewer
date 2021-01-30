@@ -123,7 +123,7 @@
                     <th class="footer-align-last-column" [ngClass]="utils.getClassNameForPositiveNegative(summary.postMarketGain)" class="stock-details-bold" mat-footer-cell *matFooterCellDef>{{utils.numberWithCommas(summary.postMarketGain)}}</th>
                 </ng-container> -->
             <ng-container matColumnDef="postMarketGain">
-                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Post<br />Market Gain</th>
+                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Post<br />Market<br />Gain</th>
                 <td [ngClass]="utils.getClassNameForPositiveNegative(row.postMarketGain)" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.postMarketGain)}}</td>
                 <th id='postMarketGainFooter' class=" stock-details-bold" [ngClass]="utils.getClassNameForPositiveNegative(summary.postMarketGain)" mat-footer-cell *matFooterCellDef>{{utils.numberWithCommas(summary.postMarketGain)}}</th>
             </ng-container>
@@ -133,8 +133,7 @@
             <tr mat-footer-row *matFooterRowDef="footerDisplayedColumns"></tr>
         </table>
 
-
-        <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="20" [pageSizeOptions]="[10, 20, 25, 30]">
+        <mat-paginator paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="20" [pageSizeOptions]="[10, 20, 25, 30]">
         </mat-paginator>
     </div>
 </mat-card>

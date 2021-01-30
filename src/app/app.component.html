@@ -1,10 +1,10 @@
-<app-header (searchEvent)="onSearchEvent($event)"></app-header>
+<app-header></app-header>
 <router-outlet></router-outlet>
 <div class="body">
-    <app-portfolio [portfolio]=" portfolio " (notify)="onNotifyAccountName($event) ">
+    <app-portfolio [portfolio]=" portfolio">
     </app-portfolio>
     <div class=" content ">
-        <app-news [summary]="portfolio.summary " (stockClickedEvent)="onStockClickedEvent($event) "></app-news>
-        <app-stocks [dataSource]="dataSource " [account]="account "></app-stocks>
+        <app-news [summary]="portfolio.summary "></app-news>
+        <app-stock-table></app-stock-table>>
     </div>
 </div>
