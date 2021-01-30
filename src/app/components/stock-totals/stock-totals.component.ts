@@ -8,7 +8,7 @@ import { Utils } from 'src/app/utils/Utils';
   styleUrls: ['./stock-totals.component.css']
 })
 export class StockTotalsComponent implements OnInit {
-  @Input() utils = new Utils();
+  utils = new Utils();
   @Input() isStockQuery = false;
   @Input() accountName = "";
   @Input() summary = new StockSummary();
@@ -48,6 +48,9 @@ export class StockTotalsComponent implements OnInit {
 
   getPostMarketPercentChange() {
     return this.utils.getPercent(this.summary.postMarketPercentChange);
+  }
+  getPostMarketGainClass() {
+    return this.utils.numberWithCommas(this.summary.postMarketGain);
   }
 
   getPostMarketGain() {

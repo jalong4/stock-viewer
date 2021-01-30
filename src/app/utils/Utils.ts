@@ -5,11 +5,11 @@ export class Utils {
 
   numberWithCommas(number: number) {
     if (Number.isNaN(number)) {
-      return "";
+      return "0.00";
     }
 
     if (number == null) {
-      return "";
+      return "0.00";
     }
     return number.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   }

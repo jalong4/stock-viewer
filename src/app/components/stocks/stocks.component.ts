@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StockTableDataSource, StockTableItem } from 'src/app/components/stock-table/stock-table-datasource';
 import { Account } from 'src/app/models/Account';
 import { StockSummary } from 'src/app/models/StockSummary';
-import { Stock } from 'src/app/models/Stock';
 import { Utils } from 'src/app/utils/Utils';
 
 @Component({
@@ -10,18 +10,20 @@ import { Utils } from 'src/app/utils/Utils';
   styleUrls: ['./stocks.component.css']
 })
 export class StocksComponent implements OnInit {
-  @Input() stocks = [new Stock()];
   @Input() account = new Account();
-  @Input() utils = new Utils();
-  @Input() isStockQuery = false;
+  @Input() dataSource = new StockTableDataSource();
+
+  isStockQuery = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   getTitle():string {
-    this.isStockQuery = [...new Set(this.stocks.map(({ ticker }) => ticker))].length === 1;
-    return this.isStockQuery ? this.stocks[0].name : this.account.name + ' Stocks';
+    const stocks = this.dataSource.data;
+    this.isStockQuery = [...new Set(stocks.map(({ ticker }) => ticker))].length === 1;
+    return this.isStockQuery ? stocks[0].name : this.account.name + ' Stocks';
   }
 
   getSummary():StockSummary {
@@ -29,17 +31,18 @@ export class StocksComponent implements OnInit {
   }
 
   getStockSummary():StockSummary {
+    const stocks = this.dataSource.data;
     var result = new StockSummary();
-    const quantity = this.stocks.reduce((sum, a) => sum + a.quantity, 0);
-    const total = this.stocks.reduce((sum, a) => sum + a.total, 0);
-    const totalCost = this.stocks.reduce((sum, a) => sum + a.totalCost, 0);
-    var postMarketGain = this.stocks.reduce((sum, a) => sum + a.postMarketGain, 0);
+    const quantity = stocks.reduce((sum, a) => sum + a.quantity, 0);
+    const total = stocks.reduce((sum, a) => sum + a.total, 0);
+    const totalCost = stocks.reduce((sum, a) => sum + a.totalCost, 0);
+    var postMarketGain = stocks.reduce((sum, a) => sum + a.postMarketGain, 0);
 
-    var dayGain = this.stocks.reduce((sum, a) => sum + a.dayGain, 0);
-    const profit = this.stocks.reduce((sum, a) => sum + a.profit, 0);
+    var dayGain = stocks.reduce((sum, a) => sum + a.dayGain, 0);
+    const profit = stocks.reduce((sum, a) => sum + a.profit, 0);
     const percentChange = ((total - dayGain) == 0) ? 0 : (dayGain / (total - dayGain));
     const percentProfit = (totalCost == 0) ? ((profit == 0) ? 0 : 1) : (profit / totalCost);
-    const postMarketPercentChange = (total == 0 || postMarketGain) ? 0 : (postMarketGain / total);
+    const postMarketPercentChange = (total == 0) ? 0 : (postMarketGain / total);
 
     result.quantity = quantity;
     result.percentChange = percentChange;

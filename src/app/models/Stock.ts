@@ -1,10 +1,12 @@
-export class Stock {
+import { StockTableItem } from 'src/app/components/stock-table/stock-table-datasource';
+
+export class Stock implements StockTableItem {
   ticker = "";
   name = "";
   account = "";
   quantity = 0;
   price = 0;
-  priceChange = 0;
+  priceChange? = 0;
   percentChange = 0;
   dayGain = 0;
   unitCost = 0;

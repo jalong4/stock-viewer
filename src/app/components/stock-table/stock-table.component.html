@@ -1,0 +1,126 @@
+<div class="mat-elevation-z8">
+    <mat-card-title>{{ getTitle() }}</mat-card-title>
+    <div class="table-container">
+        <table mat-table class="full-width-table" matSort aria-label="Elements">
+            <!-- Name Column -->
+            <ng-container class="stock-flex" matColumnDef="name" sticky>
+                <th class="stock-name-bold" mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td class="stock-name" mat-cell *matCellDef="let row">{{row.name}}</td>
+                <th class="stock-name-bold" mat-footer-cell *matFooterCellDef>Total</th>
+            </ng-container>
+
+            <!-- Account Column -->
+            <ng-container matColumnDef="account">
+                <th class="stock-name-bold" mat-header-cell *matHeaderCellDef mat-sort-header>Account</th>
+                <td class="stock-name" mat-cell *matCellDef="let row">{{row.account}}</td>
+                <th class="stock-name-bold" mat-footer-cell *matFooterCellDef>Total</th>
+            </ng-container>
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="price">
+                <th class="stock-details-bold" mat-header-cell *matHeaderCellDef>Price</th>
+                <td mat-cell *matCellDef="let row" class="stock-details">{{utils.numberWithCommas(row.price)}}</td>
+            </ng-container>
+
+            <!-- Quantity Column -->
+            <ng-container matColumnDef="quantity">
+                <th class="stock-details-bold" mat-header-cell *matHeaderCellDef>Quantity</th>
+                <td mat-cell *matCellDef="let row" class="stock-details">{{utils.numberWithCommas(row.quantity)}}</td>
+                <th class="stock-details-bold" mat-footer-cell *matFooterCellDef>{{getQuantityTotal(summary.quantity)}}</th>
+            </ng-container>
+
+            <!-- percentChange Column -->
+            <ng-container matColumnDef="percentChange">
+                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Change (%)</th>
+                <td class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(row.percentChange)" mat-cell *matCellDef="let row">{{utils.getPercent(row.percentChange)}}</td>
+                <th class="stock-details-bold" [ngClass]="utils.getClassNameForPositiveNegative(summary.percentChange)" mat-footer-cell *matFooterCellDef>utils.getPercent(summary.percentChange)</th>
+            </ng-container>
+
+            <!-- priceChange Column -->
+            <ng-container matColumnDef="priceChange">
+                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Change ($)</th>
+                <td class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(row.priceChange)" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.priceChange)}}</td>
+            </ng-container>
+
+            <!-- dayGain Column -->
+            <ng-container matColumnDef="dayGain">
+                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Day Gain</th>
+                <td class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(row.dayGain)" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.dayGain)}}</td>
+                <th class="stock-details-bold" [ngClass]="utils.getClassNameForPositiveNegative(summary.dayGain)" mat-footer-cell *matFooterCellDef>utils.numberWithCommas(summary.dayGain)</th>
+            </ng-container>
+
+            <!-- unitCost Column -->
+            <ng-container matColumnDef="unitCost">
+                <th class="stock-details-bold" mat-header-cell *matHeaderCellDef>Unit Cost</th>
+                <td class="stock-details" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.unitCost)}}</td>
+            </ng-container>
+
+            <!-- totalCost Column -->
+            <ng-container matColumnDef="totalCost">
+                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Total Cost</th>
+                <td mat-cell *matCellDef="let row" class="stock-details">{{utils.numberWithCommas(row.totalCost)}}</td>
+                <th class="stock-details-bold" mat-footer-cell *matFooterCellDef>{{utils.numberWithCommas(summary.totalCost)}}</th>
+            </ng-container>
+
+            <!-- profit Column -->
+            <ng-container matColumnDef="profit">
+                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Profit</th>
+                <td class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(row.profit)" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.profit)}}</td>
+                <td class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(summary.profit)" mat-cell *matCellDef="let row">{{utils.numberWithCommas(summary.profit)}}</td>
+            </ng-container>
+
+            <!-- total Column -->
+            <ng-container matColumnDef="total">
+                <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Total</th>
+                <td class="stock-details" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.total)}}</td>
+                <th class="stock-details-bold" mat-footer-cell *matFooterCellDef>{{utils.numberWithCommas(summary.total)}}</th>
+            </ng-container>
+
+            <!-- percentProfit Column -->
+            <ng-container matColumnDef="percentProfit">
+                <th mat-sort-header arrowPosition="before" mat-header-cell *matHeaderCellDef class="stock-details-bold">Profit (%)</th>
+                <td [ngClass]="utils.getClassNameForPositiveNegative(row.percentProfit)" mat-cell *matCellDef="let row" class="stock-details">{{utils.getPercent(row.percentProfit)}}</td>
+            </ng-container>
+
+            <!-- Ticker Column -->
+            <ng-container matColumnDef="ticker">
+                <th mat-sort-header arrowPosition="before" mat-header-cell *matHeaderCellDef class="stock-details-bold">Ticker</th>
+                <td mat-cell *matCellDef="let row" class="stock-details">{{row.ticker}}</td>
+            </ng-container>
+
+            <!-- postMarketPrice Column -->
+            <ng-container matColumnDef="postMarketPrice">
+                <th mat-header-cell *matHeaderCellDef class="stock-details-bold">Post Market Price</th>
+                <td mat-cell *matCellDef="let row" class="stock-details">{{utils.numberWithCommas(row.postMarketPrice)}}</td>
+            </ng-container>
+
+            <!-- postMarketPercentChange Column -->
+            <ng-container matColumnDef="postMarketPercentChange">
+                <th mat-sort-header arrowPosition="before" mat-header-cell *matHeaderCellDef class="stock-details-bold">Post Market Change ($)</th>
+                <td [ngClass]="utils.getClassNameForPositiveNegative(row.postMarketPercentChange)" mat-cell *matCellDef="let row" class="stock-details">{{utils.getPercent(row.postMarketPercentChange)}}</td>
+                <td [ngClass]="utils.getClassNameForPositiveNegative(summary.postMarketPercentChange)" mat-cell *matCellDef="let row" class="stock-details">{{utils.getPercent(summary.postMarketPercentChange)}}</td>
+            </ng-container>
+
+            <!-- postMarketChange Column -->
+            <ng-container matColumnDef="postMarketChange">
+                <th mat-sort-header arrowPosition="before" mat-header-cell *matHeaderCellDef class="stock-details-bold">Post Market Change ($)</th>
+                <td class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(row.postMarketChange)" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.postMarketChange)}}</td>
+            </ng-container>
+
+            <!-- postMarketGain Column -->
+            <ng-container matColumnDef="postMarketGain">
+                <th mat-sort-header arrowPosition="before" mat-header-cell *matHeaderCellDef class="stock-details-bold">Post Market Gain</th>
+                <td class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(row.postMarketGain)" mat-cell *matCellDef="let row">{{utils.numberWithCommas(row.postMarketGain)}}</td>
+                <th [ngClass]="utils.getClassNameForPositiveNegative(summary.postMarketGain)" class="stock-details-bold" mat-footer-cell *matFooterCellDef>{{utils.numberWithCommas(summary.postMarketGain)}}</th>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="footerDisplayedColumns"></tr>
+        </table>
+
+
+        <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="20" [pageSizeOptions]="[10, 20, 25, 30]">
+        </mat-paginator>
+    </div>
+</div>

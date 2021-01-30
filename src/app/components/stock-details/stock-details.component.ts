@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Stock } from 'src/app/models/Stock';
+import { StockTableItem } from 'src/app/components/stock-table/stock-table-datasource';
 import { Utils } from 'src/app/utils/Utils';
 
 @Component({
@@ -8,7 +8,7 @@ import { Utils } from 'src/app/utils/Utils';
   styleUrls: ['./stock-details.component.css']
 })
 export class StockDetailsComponent implements OnInit {
-  @Input() stock: Stock = new Stock();
+  @Input() stock: StockTableItem;
   @Input() utils:Utils = new Utils();
   @Input() isStockQuery = false;
 

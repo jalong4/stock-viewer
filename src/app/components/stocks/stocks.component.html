@@ -1,4 +1,4 @@
-<mat-card class=stock-card>
+<!-- <mat-card class=stock-card>
     <mat-card-title>{{ getTitle() }}</mat-card-title>
     <div class="stock-flex">
         <span class="stock-name-bold" *ngIf="!isStockQuery">Company Name</span>
@@ -19,9 +19,19 @@
         <span class="stock-details-bold ">Post Market Change ($)</span>
         <span class="stock-details-bold ">Post Market Gain</span>
     </div>
-    <div *ngFor=" let stock of stocks ">
-        <app-stock-details [stock]="stock" [isStockQuery]="isStockQuery">
+    <div *ngFor=" let stock of getStocks() ">
+        <app-stock-details [stock]=" stock " [isStockQuery]="isStockQuery ">
         </app-stock-details>
     </div>
-    <app-stock-totals [isStockQuery]="isStockQuery" [accountName]="account.name" [summary]="getStockSummary()"></app-stock-totals>
+    <app-stock-totals [isStockQuery]="isStockQuery " [accountName]="account.name " [summary]="getStockSummary() "></app-stock-totals>
+</mat-card> -->
+
+<mat-card class=stock-card>
+    <mat-card-title>{{ getTitle() }}</mat-card-title>
+    <div class="stock-flex ">
+        <!-- <app-stock-table [dataSource]="dataSource " [ isStockQuery]=" isStockQuery " [account]="account " [summary]="getSummary()">
+        </app-stock-table> -->
+        <app-stock-table [dataSource]="dataSource " [ isStockQuery]=" isStockQuery " [account]="account">
+        </app-stock-table>
+    </div>
 </mat-card>

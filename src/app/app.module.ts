@@ -30,6 +30,10 @@ import { StockDetailsComponent } from './components/stock-details/stock-details.
 import { HoldingsComponent } from './components/holdings/holdings.component';
 import { SearchComponent } from './components/search/search.component';
 import { StockTotalsComponent } from './components/stock-totals/stock-totals.component';
+import { StockTableComponent } from './components/stock-table/stock-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -46,7 +50,8 @@ import { StockTotalsComponent } from './components/stock-totals/stock-totals.com
     StockDetailsComponent,
     HoldingsComponent,
     SearchComponent,
-    StockTotalsComponent
+    StockTotalsComponent,
+    StockTableComponent
   ],
   imports: [
     HttpClientModule,
@@ -66,6 +71,9 @@ import { StockTotalsComponent } from './components/stock-totals/stock-totals.com
     MatListModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

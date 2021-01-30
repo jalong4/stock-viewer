@@ -1,0 +1,72 @@
+.table-container {
+    width: 70vw;
+}
+
+.mat-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.mat-row {
+    height: auto;
+}
+
+.mat-cell {
+    padding: 0 8px 0px 8px;
+}
+
+// table column width helper for mat-tables
+@for $index from 0 through 200 {
+    $size: $index * 2;
+    .table-column-#{$size} {
+        margin-right: 4px;
+        min-width: 60px;
+        flex: 1;
+        font-size: 11px;
+        text-align: right;
+    }
+}
+
+.stock-flex {
+    display: flex;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.stock-name-bold {
+    font-weight: bolder;
+    min-width: 120px;
+    font-size: 11px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.stock-details-bold {
+    font-weight: bolder;
+    margin-right: 4px;
+    width: 64px;
+    flex: 1;
+    font-size: 11px;
+    text-align: right;
+}
+
+.stock-name {
+    min-width: 120px;
+    font-size: 10px;
+    margin-right: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 1px;
+    text-align: left;
+}
+
+.stock-details {
+    margin-right: 4px;
+    width: 64px;
+    flex: 1;
+    font-size: 11px;
+    text-align: right;
+    text-align: right;
+}

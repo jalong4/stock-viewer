@@ -13,6 +13,7 @@
 }
 
 app-portfolio {
+    min-width: 300px;
     width: 20%;
     height: 100%;
     padding: 10px;
@@ -23,8 +24,8 @@ app-news {
     margin-bottom: 4px;
 }
 
-app-stocks {
-    min-height: 600px;
+app-stock-table {
+    min-height: 500px;
     height: auto;
     padding: 10px 0;
 }

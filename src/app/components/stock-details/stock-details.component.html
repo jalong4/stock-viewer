@@ -1,19 +1,19 @@
 <div class="stock-flex">
     <span class=" stock-name " *ngIf="!isStockQuery">{{ stock.name | slice:0:21 }}</span>
     <span class=" stock-name " *ngIf="isStockQuery">{{ stock.account | slice:0:21 }}</span>
-    <span [ngClass]=" utils.getClassNameForPositiveNegative(stock.price) " class=" stock-details ">{{utils.numberWithCommas(stock.price)}}</span>
+    <span [ngClass]=" utils.getClassNameForPositiveNegative(stock.price)" class=" stock-details ">{{utils.numberWithCommas(stock.price)}}</span>
     <span class=" stock-details ">{{utils.numberWithCommas(stock.quantity) }}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.percentChange) " class=" stock-details ">{{utils.getPercent(stock.percentChange)}}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.priceChange) " class=" stock-details ">{{utils.numberWithCommas(stock.priceChange)}}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.dayGain) " class=" stock-details ">{{utils.numberWithCommas(stock.dayGain)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.percentChange)" class=" stock-details ">{{utils.getPercent(stock.percentChange)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.priceChange)" class=" stock-details ">{{utils.numberWithCommas(stock.priceChange)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.dayGain)" class=" stock-details ">{{utils.numberWithCommas(stock.dayGain)}}</span>
     <span class=" stock-details ">{{utils.numberWithCommas(stock.unitCost)}}</span>
     <span class=" stock-details ">{{utils.numberWithCommas(stock.totalCost)}}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.profit) " class=" stock-details ">{{utils.numberWithCommas(stock.profit)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.profit)" class=" stock-details ">{{utils.numberWithCommas(stock.profit)}}</span>
     <span class=" stock-details ">{{utils.numberWithCommas(stock.total)}}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.percentProfit) " class=" stock-details ">{{utils.getPercent(stock.percentProfit)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.percentProfit)" class=" stock-details ">{{utils.getPercent(stock.percentProfit)}}</span>
     <span class=" stock-details ">{{stock.ticker}}</span>
     <span class=" stock-details ">{{utils.numberWithCommas(stock.postMarketPrice)}}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.postMarketChangePercentage) " class=" stock-details ">{{utils.getPercent(stock.postMarketChangePercentage)}}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.postMarketChange) " class=" stock-details ">{{utils.numberWithCommas(stock.postMarketChange)}}</span>
-    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.postMarketGain) " class=" stock-details ">{{utils.numberWithCommas(stock.postMarketGain)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.postMarketChangePercentage)" class=" stock-details ">{{utils.getPercent(stock.postMarketChangePercentage)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.postMarketChange)" class=" stock-details ">{{utils.numberWithCommas(stock.postMarketChange)}}</span>
+    <span [ngClass]="utils.getClassNameForPositiveNegative(stock.postMarketGain)" class=" stock-details ">{{utils.numberWithCommas(stock.postMarketGain)}}</span>
 </div>
