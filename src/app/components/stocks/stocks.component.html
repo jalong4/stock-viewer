@@ -27,11 +27,10 @@
 </mat-card> -->
 
 <mat-card class=stock-card>
-    <mat-card-title>{{ getTitle() }}</mat-card-title>
     <div class="stock-flex ">
         <!-- <app-stock-table [dataSource]="dataSource " [ isStockQuery]=" isStockQuery " [account]="account " [summary]="getSummary()">
         </app-stock-table> -->
-        <app-stock-table [dataSource]="dataSource " [ isStockQuery]=" isStockQuery " [account]="account">
+        <app-stock-table [dataSource]="dataSource " [isStockQuery]=" isStockQuery " [account]="account" [summary]="getSummary()">
         </app-stock-table>
     </div>
 </mat-card>

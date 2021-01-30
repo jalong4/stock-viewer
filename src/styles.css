@@ -1,69 +1,69 @@
-    body {
-        margin: 0;
-        font-family: Roboto, "Helvetica Neue", sans-serif;
-    }
-    
-    mat-card:not([class*=mat-elevation-z]) {
-        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1), 0 1px 3px 0 rgba(0, 0, 0, 1);
-        margin-bottom: 2px;
-    }
-    
-    .list-seperator {
-        margin-bottom: 10px;
-    }
-    
-    ul {
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-    }
-    
-    li {
-        margin-bottom: 2px;
-    }
-    
-    .right-justify {
-        display: flex;
-        justify-content: space-between;
-        box-sizing: border-box;
-        margin-right: 20px;
-    }
-    
-    .positive {
-        color: rgb(19, 130, 63);
-    }
-    
-    .negative {
-        color: rgb(232, 35, 50)
-    }
-    
-    h3 {
-        font-size: 12px;
-        font-weight: bold;
-    }
-    
-    .stock-flex {
-        display: flex;
-        line-height: 1.2;
-        margin-bottom: 5px;
-    }
-    
-    .stock-name-bold {
-        font-weight: bolder;
-        min-width: 120px;
-        font-size: 11px;
-        margin-right: 10px;
-    }
-    
-    .stock-details-bold {
-        font-weight: bolder;
-        margin-right: 4px;
-        min-width: 60px;
-        flex: 1;
-        font-size: 11px;
-        text-align: right;
-    }
-    
-    .stock-card {
-        min-height: 400px;
-    }
+        body {
+            margin: 0;
+            font-family: Roboto, "Helvetica Neue", sans-serif;
+        }
+        
+        mat-card:not([class*=mat-elevation-z]) {
+            box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1), 0 1px 3px 0 rgba(0, 0, 0, 1);
+            margin-bottom: 2px;
+        }
+        
+        .list-seperator {
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        
+        li {
+            margin-bottom: 2px;
+        }
+        
+        .right-justify {
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+            margin-right: 20px;
+        }
+        
+        .positive {
+            color: rgb(19, 130, 63);
+        }
+        
+        .negative {
+            color: rgb(232, 35, 50)
+        }
+        
+        h3 {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .stock-flex {
+            display: flex;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+        
+        .stock-name-bold {
+            font-weight: bolder;
+            min-width: 120px;
+            font-size: 11px;
+            margin-right: 10px;
+        }
+        
+        .stock-details-bold {
+            font-weight: bolder;
+            margin-right: 4px;
+            min-width: 60px;
+            flex: 1;
+            font-size: 11px;
+            text-align: right;
+        }
+        
+        .stock-card {
+            min-height: 400px;
+        }

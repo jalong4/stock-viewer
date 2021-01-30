@@ -44,8 +44,7 @@ export class AppComponent {
   }
 
   refreshDataSource(stocks: StockTableItem[]) {
-    this.dataSource.data = stocks;
-    this.dataSource.data = this.dataSource.data;
+    this.dataSource.data = [...stocks];
     // this.dataSource.connect().next(stocks);
     // this.paginator._changePageSize(this.paginator.pageSize);
     console.dir(this.dataSource.data);
