@@ -1,3 +1,14 @@
+.mat-card {
+    width: 100%;
+    min-width: 260px;
+    max-width: 276px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 0px;
+    margin-right: 10px;
+}
+
 .summary-header {
     font-weight: bold;
     font-size: 12px;

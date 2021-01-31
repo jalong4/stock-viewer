@@ -1,15 +1,9 @@
-.table-container {
+.mat-table {
+    margin-bottom: 1rem;
     display: block;
     width: 100%;
-    overflow-x: auto
-}
-
-.mat-table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 1rem;
-    display: table;
     border-collapse: collapse;
+    overflow-x: scroll;
     margin: 0px;
 }
 
@@ -19,8 +13,14 @@
 
 .mat-cell,
 .mat-header-cell {
+    word-wrap: initial;
     display: table-cell;
+    padding: 0px 10px;
+    line-break: unset;
     width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 .mat-row,
@@ -88,6 +88,12 @@ mat-header-cell:first-child {
 .mat-column-profit {
     flex: none;
     width: 90px;
+}
+
+.mat-column-name,
+.mat-column-account {
+    flex: none;
+    width: 130px;
 }
 
 .stock-flex {

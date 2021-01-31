@@ -7,9 +7,13 @@
     margin-right: 20px;
 }
 
-mat-card {
+.mat-card {
+    width: 100%;
+    min-width: 260px;
+    max-width: 276px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 0px;
+    margin-right: 10px;
 }
