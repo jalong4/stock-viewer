@@ -1,4 +1,5 @@
-.portfolio {
-    box-sizing: border-box;
-    height: 100vh;
+.summary-header {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 14px;
 }

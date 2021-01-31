@@ -1,22 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Account } from 'src/app/models/Account';
 import { Portfolio } from 'src/app/models/Portfolio';
+import { Utils } from 'src/app/utils/Utils';
 
 @Component({
-  selector: 'app-portfolio',
-  templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.css']
+    selector: 'app-portfolio',
+    templateUrl: './portfolio.component.html',
+    styleUrls: ['./portfolio.component.css']
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent {
+    @Input() account = new Account();
+    @Input() portfolio = new Portfolio();
+    @Input() utils = new Utils();
 
-@Input() portfolio = new Portfolio();
-@Output() notify = new EventEmitter<string>();
-
-  onNotifyAccountName(account:string):void {
-    console.log(account);
-    this.notify.emit(account);
-  }
-
-ngOnInit() {
-
-  }
 }

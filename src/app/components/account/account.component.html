@@ -9,10 +9,10 @@
             <span [ngClass]="utils.getClassNameForPositiveNegative(account.dayGain) ">
               {{ utils.getGainWithPercentString(account.dayGain, account.percentChange) }}</span>
         </li>
-        <li class=right-justify> Total Gain:
+        <!-- <li class=right-justify> Total Gain:
             <span [ngClass]="utils.getClassNameForPositiveNegative(account.profit) ">
               {{ utils.getGainWithPercentString(account.profit, account.percentProfit) }}</span>
-        </li>
+        </li> -->
         <li *ngIf="account.postMarketGain !=0 " class=right-justify> Post Market:
             <span [ngClass]=" utils.getClassNameForPositiveNegative(account.postMarketGain) ">
             {{ utils.getGainWithPercentString(account.postMarketGain, account.postMarketPercentChange) }}</span>

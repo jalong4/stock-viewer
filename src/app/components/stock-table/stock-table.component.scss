@@ -17,6 +17,10 @@
             display: table-row;
         }
         
+         ::ng-deep .mat-sort-header-content {
+            text-align: right !important;
+        }
+        
         table {
             table-layout: fixed;
             word-break: break-all;
@@ -29,7 +33,8 @@
             width: 72px;
             flex: 1;
             justify-content: flex-end;
-            text-align: right;
+            align-items: flex-end;
+            text-align: end;
         }
         
         th.mat-header-cell,

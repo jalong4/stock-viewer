@@ -19,12 +19,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
-import { AccountsComponent } from './components/accounts/accounts.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AccountComponent } from './components/account/account.component';
 import { NewsComponent } from './components/news/news.component';
 import { StockGroupComponent } from './components/stock-group/stock-group.component';
-import { PortfolioSummaryComponent } from './components/portfolio-summary/portfolio-summary.component';
 import { HoldingsComponent } from './components/holdings/holdings.component';
 import { SearchComponent } from './components/search/search.component';
 import { StockTableComponent } from './components/stock-table/stock-table.component';
@@ -37,12 +35,10 @@ import { MatSortModule } from '@angular/material/sort';
     declarations: [
         AppComponent,
         PortfolioComponent,
-        AccountsComponent,
         HeaderComponent,
         AccountComponent,
         NewsComponent,
         StockGroupComponent,
-        PortfolioSummaryComponent,
         HoldingsComponent,
         SearchComponent,
         StockTableComponent

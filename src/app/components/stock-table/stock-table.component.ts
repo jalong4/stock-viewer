@@ -184,8 +184,10 @@ export class StockTableComponent implements AfterViewInit, OnInit {
     refreshDataSource(stocks: StockTableItem[]) {
         this.summary = this.getSummary();
         this.dataSource.data = [...(stocks)];
-        this.paginator._changePageSize(this.paginator.pageSize);
-        this.table.renderRows();
+        if (this.paginator && this.paginator.pageSize !== null) {
+            this.paginator._changePageSize(this.paginator.pageSize);
+            this.table.renderRows();
+        }
         console.dir(this.dataSource.data);
     }
 
