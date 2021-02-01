@@ -7,14 +7,14 @@
                 <ng-container class="stock-flex" matColumnDef="name" sticky>
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
                     <td class="stock-name" mat-cell *matCellDef="let row">{{row.name}}</td>
-                    <th class="footer-align-right" mat-footer-cell *matFooterCellDef>Total</th>
+                    <th class="footer-align-left" mat-footer-cell *matFooterCellDef>Total</th>
                 </ng-container>
 
                 <!-- Account Column -->
                 <ng-container matColumnDef="account">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Account</th>
                     <td class="stock-name" mat-cell *matCellDef="let row">{{row.account}}</td>
-                    <th class="stock-details-bold" mat-footer-cell *matFooterCellDef>Total</th>
+                    <th class="footer-align-left" mat-footer-cell *matFooterCellDef>Total</th>
                 </ng-container>
 
                 <!-- Price Column -->
