@@ -86,9 +86,10 @@ mat-header-cell:first-child {
 
 .mat-column-total,
 .mat-column-totalCost,
-.mat-column-profit {
+.mat-column-profit,
+.mat-column-quantity {
     flex: none;
-    width: 90px;
+    width: 92px;
 }
 
 .mat-column-name,

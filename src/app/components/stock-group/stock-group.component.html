@@ -1,12 +1,12 @@
-<mat-card class=trending>
+<mat-card class=news-card>
     <h3>{{ title }}</h3>
-    <ul *ngFor=" let trendingStock of trendingStocks ">
+    <ul *ngFor=" let item of stockGains ">
         <li>
-            <a class="right-justify" (click)="onClick(trendingStock.ticker)">
-                {{ trendingStock.ticker }}:
-                <span [ngClass]="utils.getClassNameForPositiveNegative(trendingStock.gain) ">
-                    {{ utils.getGainString(trendingStock.gain)}}
-                    </span>
+            <a class="right-justify" (click)="onClick(item.ticker)">
+                <span class="stock-name">{{ item.ticker }}</span>
+                <span class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(item.gain)">
+                    {{ utils.getGainWithPercentString(item.gain, item.percent) }}
+                </span>
             </a>
         </li>
     </ul>

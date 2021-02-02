@@ -1,16 +1,14 @@
-import { AfterViewInit, Component, OnInit, OnDestroy, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { StockTableDataSource, StockTableItem } from './stock-table-datasource';
 import { Account } from 'src/app/models/Account';
 import { StockSummary } from 'src/app/models/StockSummary';
-import { Stock } from 'src/app/models/Stock';
 import { Utils } from 'src/app/utils/Utils';
 import { Portfolio } from 'src/app/models/Portfolio';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 import { MessageService } from 'src/app/services/message.service';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -19,9 +17,9 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./stock-table.component.scss']
 })
 export class StockTableComponent implements AfterViewInit, OnInit {
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild(MatTable) table: MatTable < StockTableItem > ;
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
+    @ViewChild(MatTable) table!: MatTable < StockTableItem > ;
 
     utils = new Utils();
 
@@ -32,12 +30,18 @@ export class StockTableComponent implements AfterViewInit, OnInit {
     dataSource = new StockTableDataSource();
 
     ticker = '';
-    private subscription: Subscription;
+
+    isPostMarketDataAvailable = true;
 
     /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+    postMarketColumns = [
+        'postMarketPrice',
+        'postMarketPercentChange',
+        'postMarketChange',
+        'postMarketGain'
+    ];
 
-    displayedColumns = [
-        this.isStockQuery ? 'account' : 'name',
+    displayedColumnsWithoutPostMarket = [
         'price',
         'quantity',
         'percentChange',
@@ -48,41 +52,16 @@ export class StockTableComponent implements AfterViewInit, OnInit {
         'profit',
         'total',
         'percentProfit',
-        'ticker',
-        'postMarketPrice',
-        'postMarketPercentChange',
-        'postMarketChange',
-        'postMarketGain'
+        'ticker'
     ];
 
-    footerDisplayedColumns = [
-        this.isStockQuery ? 'account' : 'name',
-        'price',
-        'quantity',
-        'percentChange',
-        'priceChange',
-        'dayGain',
-        'unitCost',
-        'totalCost',
-        'profit',
-        'total',
-        'percentProfit',
-        'ticker',
-        'postMarketPrice',
-        'postMarketPercentChange',
-        'postMarketChange',
-        'postMarketGain'
-    ];
-
+    displayedColumns: string[] = [];
 
     constructor(private portfolioService: PortfolioService, private messageService: MessageService) {}
 
     ngOnInit(): void {
-        console.log("ngOnInit")
         this.portfolioService.getPortfolio().subscribe(portfolio => {
             this.portfolio = portfolio;
-            console.dir(portfolio);
-            console.log("portfolio.subscribe");
             if (this.portfolio.summary.accounts.length) {
                 this.account = this.portfolio.summary.accounts[0];
                 this.refreshDataSource(this.getStocksForAccount(this.account.name));
@@ -92,12 +71,10 @@ export class StockTableComponent implements AfterViewInit, OnInit {
         this.messageService.getMessage().subscribe((event: { value ? : string, action: string }) => {
             if (event.action === 'SHOW_TICKER') {
                 this.ticker = event.value!;
-                console.log(`Received new ticker in StockTableComponent: ${this.ticker}`);
                 this.isStockQuery = true;
                 this.refreshDataSource(this.getStocksForTicker(this.ticker));
             } else if (event.action === 'SHOW_ACCOUNT') {
                 const accountName = event.value!;
-                console.log(`Received new account in StockTableComponent: ${accountName}`);
                 this.isStockQuery = false;
                 this.account = this.portfolio.summary.accounts.filter(a => a.name === accountName)[0];
                 this.refreshDataSource(this.getStocksForAccount(accountName));
@@ -112,14 +89,18 @@ export class StockTableComponent implements AfterViewInit, OnInit {
     }
 
     ngAfterViewInit() {
-        console.log("ngAfterViewInit")
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.table.dataSource = this.dataSource;
     }
 
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
+    updateDisplayedColumns() {
+        const firstColumn = this.isStockQuery ? ['account'] : ['name'];
+        const withoutPostMarket = firstColumn.concat(this.displayedColumnsWithoutPostMarket);
+        this.isPostMarketDataAvailable = (this.portfolio.stocks.reduce((sum, a) => sum + a.postMarketChange, 0)) != 0;
+        this.displayedColumns = this.isPostMarketDataAvailable
+            ? withoutPostMarket.concat(this.postMarketColumns)
+            : withoutPostMarket;
     }
 
     getTitle(): string {
@@ -182,13 +163,13 @@ export class StockTableComponent implements AfterViewInit, OnInit {
     }
 
     refreshDataSource(stocks: StockTableItem[]) {
-        this.summary = this.getSummary();
         this.dataSource.data = [...(stocks)];
+        this.summary = this.getSummary();
         if (this.paginator && this.paginator.pageSize !== null) {
             this.paginator._changePageSize(this.paginator.pageSize);
             this.table.renderRows();
         }
-        console.dir(this.dataSource.data);
+        this.updateDisplayedColumns();
     }
 
 

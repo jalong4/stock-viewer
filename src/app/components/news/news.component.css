@@ -1,5 +1,14 @@
+app-watch-list {
+    margin: 16px;
+    min-width: 240px;
+}
+
 app-stock-group {
     margin: 16px;
-    min-width: 170px;
-    min-height: 168px;
+    min-width: 220px;
+
 }
+
+/* .news-col {
+    flex-shrink: 0;
+} */

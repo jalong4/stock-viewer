@@ -1,11 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TrendingStock } from 'src/app/models/TrendingStock';
+import { StockGains } from 'src/app/models/StockGains';
 import { Utils } from 'src/app/utils/Utils';
-import {
-    Observable,
-    Subject
-} from 'rxjs';
-
 import { MessageService } from 'src/app/services/message.service';
 
 @Component({
@@ -16,8 +11,8 @@ import { MessageService } from 'src/app/services/message.service';
 export class StockGroupComponent implements OnInit {
 
     @Input() title: string = "";
-    @Input() trendingStocks: TrendingStock[] = [new TrendingStock()];
-    @Input() utils: Utils = new Utils();
+    @Input() stockGains: StockGains[] = [new StockGains()];
+    utils: Utils = new Utils();
 
     constructor(private messageService: MessageService) {}
 

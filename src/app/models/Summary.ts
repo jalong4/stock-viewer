@@ -1,12 +1,11 @@
-import { TrendingStock } from "./TrendingStock";
+import { StockGains } from "./StockGains";
 import { Account } from "./Account";
-import { Stock } from "./Stock";
 
 export class Summary {
   totals: Account = new Account();
   accounts: Account[] = [new Account()];
-  topDayGainers: TrendingStock[] = [new TrendingStock()];
-  topDayLosers: TrendingStock[] = [new TrendingStock()];
-  mostProfitable: TrendingStock[] = [new TrendingStock()];
-  leastProfitable: TrendingStock[] = [new TrendingStock()];
+  topDayGainers: StockGains[] = [new StockGains()];
+  topDayLosers: StockGains[] = [new StockGains()];
+  mostProfitable: StockGains[] = [new StockGains()];
+  leastProfitable: StockGains[] = [new StockGains()];
 }

@@ -7,11 +7,11 @@
  
 .news-card {
     min-height: 154px;
-    min-width: 120px;
+    min-width: 200px;
 }
 
 .stock-name {
-    min-width: 40px;
+    min-width: 112px;
     font-size: 11px;
     white-space: nowrap;
     text-overflow: ellipsis;

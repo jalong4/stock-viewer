@@ -29,6 +29,7 @@ import { StockTableComponent } from './components/stock-table/stock-table.compon
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { WatchListComponent } from './components/watch-list/watch-list.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MatSortModule } from '@angular/material/sort';
         StockGroupComponent,
         HoldingsComponent,
         SearchComponent,
-        StockTableComponent
+        StockTableComponent,
+        WatchListComponent
     ],
     imports: [
         HttpClientModule,

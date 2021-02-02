@@ -4,6 +4,8 @@
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
+    margin-top: 4px;
+    margin-bottom: 4px;
     margin-right: 20px;
 }
 
@@ -11,9 +13,11 @@
     width: 100%;
     min-width: 260px;
     max-width: 276px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     padding-left: 10px;
     padding-right: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     margin-right: 10px;
 }

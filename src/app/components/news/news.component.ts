@@ -9,6 +9,7 @@ import { Summary } from 'src/app/models/Summary';
 export class NewsComponent implements OnInit {
     @Input() summary = new Summary();
     constructor() {}
+
     ngOnInit(): void {}
 
 }

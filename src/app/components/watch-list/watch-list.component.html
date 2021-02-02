@@ -1,0 +1,13 @@
+<mat-card class=news-card>
+    <h3>{{ title }}</h3>
+    <ul *ngFor="let stock of stocks">
+        <li>
+            <a class="right-justify">
+                <span class="stock-name">{{ stock.shortName }}</span>
+                <span class="stock-details" [ngClass]="utils.getClassNameForPositiveNegative(stock.regularMarketChange)">
+                    {{ utils.getGainWithPercentString(stock.regularMarketChange, stock.getPercentChange()) }}
+                </span>
+            </a>
+        </li>
+    </ul>
+</mat-card>

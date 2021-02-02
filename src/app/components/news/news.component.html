@@ -1,9 +1,10 @@
 <mat-card>
     <mat-card-title>Top Movers</mat-card-title>
     <div fxLayout="row">
-        <app-stock-group [title]="'Top Day Gainers'" [trendingStocks]="summary.topDayGainers"></app-stock-group>
-        <app-stock-group [title]=" 'Top Day Losers' " [trendingStocks]="summary.topDayLosers"></app-stock-group>
-        <app-stock-group [title]=" 'Most Profitable' " [trendingStocks]=" summary.mostProfitable"></app-stock-group>
-        <app-stock-group [title]=" 'Least Profitable' " [trendingStocks]="summary.leastProfitable"></app-stock-group>
+        <app-watch-list class="news-col" [title]="'Watch List'" [watchList]="['.DJI', 'NDAQ', '^GSPC', 'AAPL']"></app-watch-list>
+        <app-stock-group class="news-col" [title]="'Day Gainers'" [stockGains]="summary.topDayGainers"></app-stock-group>
+        <app-stock-group class="news-col" [title]=" 'Day Losers' " [stockGains]="summary.topDayLosers"></app-stock-group>
+        <app-stock-group class="news-col" [title]=" 'Most Profitable' " [stockGains]=" summary.mostProfitable"></app-stock-group>
+        <app-stock-group class="news-col" [title]=" 'Least Profitable' " [stockGains]="summary.leastProfitable"></app-stock-group>
     </div>
 </mat-card>
