@@ -22,6 +22,9 @@ export class WatchListComponent implements OnInit {
   ngOnInit(): void {
     this.stockQuoteService.setObserable(this.watchList);
     this.stockQuoteService.getStockQuote().subscribe(res => {
+      if (res.error || !res.result) {
+        return;
+      }
       this.stocks = res.result.map(x => Object.assign(new StockQuote(), x));
       console.dir(this.stocks);
     });

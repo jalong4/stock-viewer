@@ -63,7 +63,7 @@ export class StockTableComponent implements AfterViewInit, OnInit {
         this.portfolioService.getPortfolio().subscribe(portfolio => {
             this.portfolio = portfolio;
             console.dir(portfolio);
-            if (this.portfolio.summary.accounts.length) {
+            if (this.portfolio.summary && this.portfolio.summary.accounts && this.portfolio.summary.accounts.length) {
                 this.account = this.portfolio.summary.accounts[0];
                 console.dir(this.account);
                 this.refreshDataSource(this.getStocksForAccount(this.account.name));
@@ -106,7 +106,7 @@ export class StockTableComponent implements AfterViewInit, OnInit {
     }
 
     getTitle(): string {
-        return this.isStockQuery ? this.dataSource.data[0].name : this.account.name + ' Stocks';
+        return this.isStockQuery ? this.dataSource.data[0].name : this.account.name + ' Account';
     }
 
     getQuantityTotal(quantity: number): string {
