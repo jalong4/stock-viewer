@@ -101,11 +101,11 @@
                     <th class="stock-details-bold" mat-footer-cell *matFooterCellDef>&emsp;</th>
                 </ng-container>
 
-                <!-- postMarketPercentChange Column -->
-                <ng-container matColumnDef="postMarketPercentChange">
+                <!-- postMarketChangePercent Column -->
+                <ng-container matColumnDef="postMarketChangePercent">
                     <th mat-sort-header arrowPosition="before" class="stock-details-bold" mat-header-cell *matHeaderCellDef>Post<br />Change<br />(%)</th>
-                    <td [ngClass]="utils.getClassNameForPositiveNegative(row.postMarketPercentChange)" mat-cell *matCellDef="let row">{{utils.getPercent(row.postMarketPercentChange)}}</td>
-                    <th class="stock-details-bold" [ngClass]="utils.getClassNameForPositiveNegative(summary.postMarketPercentChange)" mat-footer-cell *matFooterCellDef>{{utils.getPercent(summary.postMarketPercentChange)}}</th>
+                    <td [ngClass]="utils.getClassNameForPositiveNegative(row.postMarketChangePercent)" mat-cell *matCellDef="let row">{{utils.getPercent(row.postMarketChangePercent)}}</td>
+                    <th class="stock-details-bold" [ngClass]="utils.getClassNameForPositiveNegative(summary.postMarketChangePercent)" mat-footer-cell *matFooterCellDef>{{utils.getPercent(summary.postMarketChangePercent)}}</th>
                 </ng-container>
 
                 <!-- postMarketChange Column -->

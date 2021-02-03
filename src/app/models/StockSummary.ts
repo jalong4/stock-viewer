@@ -7,5 +7,5 @@ export class StockSummary {
   profit = 0;
   percentProfit = 0;
   postMarketGain = 0;
-  postMarketPercentChange = 0;
+  postMarketChangePercent = 0;
 }

@@ -10,11 +10,15 @@ const CACHE_KEY = 'portfolioCache';
   providedIn: 'root'
 })
 export class PortfolioService {
-  url: string = 'https://api.jimlong.ca/stocks';
+
+  // url: string = 'https://api.jimlong.ca';
+  // url: string = 'localhost:3000';
+  url: string = 'https://stock-service-302608.wn.r.appspot.com';
+
   portfolio: Observable<Portfolio>
 
   constructor(private http:HttpClient) {
-    this.portfolio = http.get<Portfolio>(this.url);
+    this.portfolio = http.get<Portfolio>(this.url + '/stocks');
 
     this.portfolio.subscribe(json => {
       localStorage[CACHE_KEY] = JSON.stringify(json);

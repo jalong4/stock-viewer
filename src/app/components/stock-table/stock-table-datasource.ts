@@ -28,7 +28,7 @@ export interface StockTableItem {
     fiftyTwoWeekHigh ? : number;
     postMarketPrice: number;
     postMarketChange: number;
-    postMarketChangePercentage: number;
+    postMarketChangePercent: number;
     postMarketGain: number;
 }
 

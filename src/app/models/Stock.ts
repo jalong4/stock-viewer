@@ -20,6 +20,6 @@ export class Stock implements StockTableItem {
   fiftyTwoWeekHigh = 0;
   postMarketPrice = 0;
   postMarketChange = 0;
-  postMarketChangePercentage = 0;
+  postMarketChangePercent = 0;
   postMarketGain = 0;
 }

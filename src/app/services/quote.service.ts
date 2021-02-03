@@ -11,7 +11,12 @@ const CACHE_KEY = 'stockQuoteCache';
   providedIn: 'root'
 })
 export class StockQuoteService {
-  url: string = 'https://api.jimlong.ca/stocks/quote/';
+
+  // url: string = 'https://api.jimlong.ca';
+  // url: string = 'localhost:3000';
+  url: string = 'https://stock-service-302608.wn.r.appspot.com';
+
+
   tickers: string[] = ['.DJI', 'NDAQ', '^GSPC'];
   stockQuotes = [new StockQuote()];
   stockQuoteResponse = new Observable<StockQuoteResponse>();
@@ -21,7 +26,7 @@ export class StockQuoteService {
   }
 
   setObserable(tickers: string[]) {
-    const fullUrl = this.url + tickers.toString();
+    const fullUrl = this.url + '/stocks/quote/' + tickers.toString();
     console.log(fullUrl);
     this.stockQuoteResponse = this.http.get<StockQuoteResponse>(fullUrl);
     this.stockQuoteResponse.subscribe(json => {

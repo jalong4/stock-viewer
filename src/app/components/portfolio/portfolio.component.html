@@ -14,7 +14,7 @@
         </li>
         <li *ngIf="portfolio.summary.totals.postMarketGain != 0" class=right-justify> Post Market:
             <span [ngClass]="utils.getClassNameForPositiveNegative(portfolio.summary.totals.postMarketGain)">
-                {{ utils.getGainWithPercentString(portfolio.summary.totals.postMarketGain, portfolio.summary.totals.postMarketPercentChange) }}</span>
+                {{ utils.getGainWithPercentString(portfolio.summary.totals.postMarketGain, portfolio.summary.totals.postMarketChangePercent) }}</span>
         </li>
     </ul>
 </mat-card>

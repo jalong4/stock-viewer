@@ -36,7 +36,7 @@ export class StockTableComponent implements AfterViewInit, OnInit {
     /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
     postMarketColumns = [
         'postMarketPrice',
-        'postMarketPercentChange',
+        'postMarketChangePercent',
         'postMarketChange',
         'postMarketGain'
     ];
@@ -62,8 +62,10 @@ export class StockTableComponent implements AfterViewInit, OnInit {
     ngOnInit(): void {
         this.portfolioService.getPortfolio().subscribe(portfolio => {
             this.portfolio = portfolio;
+            console.dir(portfolio);
             if (this.portfolio.summary.accounts.length) {
                 this.account = this.portfolio.summary.accounts[0];
+                console.dir(this.account);
                 this.refreshDataSource(this.getStocksForAccount(this.account.name));
             }
         });
@@ -131,7 +133,7 @@ export class StockTableComponent implements AfterViewInit, OnInit {
         const profit = stocks.reduce((sum, a) => sum + a.profit, 0);
         const percentChange = ((total - dayGain) == 0) ? 0 : (dayGain / (total - dayGain));
         const percentProfit = (totalCost == 0) ? ((profit == 0) ? 0 : 1) : (profit / totalCost);
-        const postMarketPercentChange = (total == 0) ? 0 : (postMarketGain / total);
+        const postMarketChangePercent = (total == 0) ? 0 : (postMarketGain / total);
 
         result.quantity = quantity;
         result.percentChange = percentChange;
@@ -141,7 +143,7 @@ export class StockTableComponent implements AfterViewInit, OnInit {
         result.total = total;
         result.percentProfit = percentProfit;
         result.postMarketGain = postMarketGain;
-        result.postMarketPercentChange = postMarketPercentChange;
+        result.postMarketChangePercent = postMarketChangePercent;
 
         return result;
     }
@@ -157,7 +159,7 @@ export class StockTableComponent implements AfterViewInit, OnInit {
         result.total = this.account.total;
         result.percentProfit = this.account.percentProfit;
         result.postMarketGain = this.account.postMarketGain;
-        result.postMarketPercentChange = this.account.postMarketPercentChange;
+        result.postMarketChangePercent = this.account.postMarketChangePercent;
 
         return result;
     }

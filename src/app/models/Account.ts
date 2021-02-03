@@ -8,18 +8,5 @@ export class Account {
   profit: number = 0;
   percentProfit: number = 0;
   postMarketGain: number = 0;
-  postMarketPercentChange: number = 0;
-
-  constructor() {
-    this.name = "";
-    this.numStocks = 0;
-    this.totalCost = 0;
-    this.total = 0;
-    this.dayGain = 0;
-    this.percentChange= 0;
-    this.profit = 0;
-    this.percentProfit = 0;
-    this.postMarketGain = 0;
-    this.postMarketPercentChange = 0;
-  }
+  postMarketChangePercent: number = 0;
 }
