@@ -1,17 +1,22 @@
+import {formatNumber} from '@angular/common';
+
 export class Utils {
+
+  constructor() {}
+
   getClassNameForPositiveNegative(number: number): string {
     return (number > 0) ? "positive" : (number < 0) ? "negative" : "";
   }
 
-  numberWithCommas(number: number) {
-    if (Number.isNaN(number)) {
+  numberWithCommas(value: number, locale = 'en-US', digitsInfo = '.2-2') {
+    if (Number.isNaN(value)) {
       return "0.00";
     }
 
-    if (number == null) {
+    if (value == null) {
       return "0.00";
     }
-    return number.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    return formatNumber(value, locale, digitsInfo);
   }
 
   getGainWithPercentString(gain: number, percent: number) {
