@@ -27,7 +27,6 @@ export class StockQuoteService {
 
   setObserable(tickers: string[]) {
     const fullUrl = this.url + '/stocks/quote/' + tickers.toString();
-    console.log(fullUrl);
     this.stockQuoteResponse = this.http.get<StockQuoteResponse>(fullUrl);
     this.stockQuoteResponse.subscribe(json => {
       localStorage[CACHE_KEY] = JSON.stringify(json);

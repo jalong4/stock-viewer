@@ -19,8 +19,9 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.portfolioService.getPortfolio().subscribe(portfolio => {
-            console.dir(portfolio);
-            this.portfolio = portfolio;
+            if (portfolio && portfolio.summary && portfolio.summary.accounts && portfolio.summary.accounts.length) {
+                this.portfolio = portfolio;
+            }
         });
     }
 }

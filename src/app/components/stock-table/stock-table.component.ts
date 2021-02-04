@@ -9,6 +9,7 @@ import { Utils } from 'src/app/utils/Utils';
 import { Portfolio } from 'src/app/models/Portfolio';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 import { MessageService } from 'src/app/services/message.service';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 
 @Component({
@@ -61,11 +62,10 @@ export class StockTableComponent implements AfterViewInit, OnInit {
 
     ngOnInit(): void {
         this.portfolioService.getPortfolio().subscribe(portfolio => {
-            this.portfolio = portfolio;
-            console.dir(portfolio);
-            if (this.portfolio.summary && this.portfolio.summary.accounts && this.portfolio.summary.accounts.length) {
+            this.dataSource.data = [];
+            if (portfolio && portfolio.summary && portfolio.summary.accounts && portfolio.summary.accounts.length) {
+                this.portfolio = portfolio;
                 this.account = this.portfolio.summary.accounts[0];
-                console.dir(this.account);
                 this.refreshDataSource(this.getStocksForAccount(this.account.name));
             }
         });
@@ -186,6 +186,13 @@ export class StockTableComponent implements AfterViewInit, OnInit {
 
     getStocksForTicker(ticker: string) {
         return this.portfolio.stocks.filter(stock => stock.ticker === ticker);
+    }
+
+    getTableLength() {
+        if (this.dataSource && this.dataSource.data) {
+            return this.dataSource.data.length;
+        }
+        return 0;
     }
 
 }

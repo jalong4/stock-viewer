@@ -16,7 +16,6 @@ export class AccountComponent implements OnInit {
 
 
     onClick() {
-        console.log(`Clicked account: ${this.account.name}`);
         this.messageService.sendMessage({ value: this.account.name, action: 'SHOW_ACCOUNT' });
 
     }

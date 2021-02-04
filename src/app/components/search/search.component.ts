@@ -31,18 +31,16 @@ export class SearchComponent {
 
     public search() {
         const searchTerm = this.searchInput.nativeElement.value;
-        console.log(`Search: ${searchTerm}`);
         this.messageService.sendMessage({ value: searchTerm, action: 'SHOW_TICKER' });
         this.interactedWithSearch = true;
     }
 
     public toggleSearch() {
-        console.log(`toggleSearch: this.interactedWithSearch: ${this.interactedWithSearch}`);
+
         const searchContainer = document.getElementById('search-container');
         this.toggleClass(searchContainer, 'open');
         this.searchIcon = this.hasClass(searchContainer, 'open') ? 'clear' : 'search';
         if (!this.hasClass(searchContainer, 'open') && this.interactedWithSearch) {
-            console.log("clearing search)")
             this.messageService.sendMessage({ action: 'CLEAR' });
             this.interactedWithSearch = false;
             this.searchInput.nativeElement.value = '';

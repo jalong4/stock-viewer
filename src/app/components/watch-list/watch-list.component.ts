@@ -26,7 +26,6 @@ export class WatchListComponent implements OnInit {
         return;
       }
       this.stocks = res.result.map(x => Object.assign(new StockQuote(), x));
-      console.dir(this.stocks);
     });
   }
 

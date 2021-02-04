@@ -19,7 +19,6 @@ export class StockGroupComponent implements OnInit {
     ngOnInit(): void {}
 
     onClick(ticker: string) {
-        console.log(`clicked on stock: ${ticker}`);
         this.messageService.sendMessage({
             value: ticker,
             action: 'SHOW_TICKER'
