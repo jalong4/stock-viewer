@@ -1,10 +1,10 @@
 .mat-table {
+    margin: 0px;
     margin-bottom: 1rem;
     display: block;
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collafalsepse;
     overflow-x: scroll;
-    margin: 0px;
 }
 
 .mat-row {
@@ -56,12 +56,6 @@ td.mat-footer-cell {
     border-bottom-style: none;
 }
 
-mat-cell:first-child,
-mat-footer-cell:first-child,
-mat-header-cell:first-child {
-    padding-left: 24px !important;
-    text-align: left;
-}
 
 .footer-align-left {
     font-size: 11px;

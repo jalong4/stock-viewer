@@ -1,6 +1,6 @@
 app-watch-list {
-    margin: 16px;
-    min-width: 240px;
+    margin: 8px;
+    min-width: 220px;
 }
 
 .news-card {
@@ -9,7 +9,21 @@ app-watch-list {
 }
 
 app-stock-group {
-    margin: 16px;
+    margin: 8px;
     min-width: 220px;
 
 }
+
+.last-col {
+    padding-right: 110px;
+}
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  
+    .card {
+      display: inline-block;
+    }
+  }
