@@ -1,7 +1,6 @@
 runtime: python27
 api_version: 1
 threadsafe: true
-service: ang-loop
 handlers:
 - url: /
   static_files: dist/stock-viewer/index.html

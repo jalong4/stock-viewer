@@ -51,3 +51,8 @@
             font-size: 11px;
             text-align: right;
         }
+
+        .news-card {
+            min-height: 178px;
+            min-width: 200px;
+        }

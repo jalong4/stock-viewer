@@ -3,12 +3,13 @@ app-watch-list {
     min-width: 240px;
 }
 
+.news-card {
+    margin-bottom: 0px;
+    max-height: 250px;
+}
+
 app-stock-group {
     margin: 16px;
     min-width: 220px;
 
 }
-
-/* .news-col {
-    flex-shrink: 0;
-} */
